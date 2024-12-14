@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    enviroment{
+    environment{
         USERNAME = '22120330'
         PASSWORD = 'Thai668084'
     }
