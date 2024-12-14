@@ -28,5 +28,10 @@ pipeline{
                 }
             }
         }
+        stage("Container creating"){
+            steps{
+                sh 'docker run -itd --name ci-cd-project -p 8600:3000 22120330/ci-cd-project:latest'
+            }
+        }
     }
 }
