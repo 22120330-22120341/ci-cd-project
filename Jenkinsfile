@@ -39,12 +39,12 @@ pipeline{
             
             
                 if (containerExists) {
-                    sh "docker stop ci-cd-project.v$BUILD_ID || true"
-                    sh "docker rm ci-cd-project.v$BUILD_ID || true"
+                    sh "docker stop ci-cd-project|| true"
+                    sh "docker rm ci-cd-project|| true"
                 }
             }
         
-                sh 'docker run -itd --name ci-cd-project.v$BUILD_ID -p 8600:3000 22120330/ci-cd-project:latest'
+                sh 'docker run -itd --name ci-cd-project -p 8600:3000 22120330/ci-cd-project:latest'
             }
         }
     }
