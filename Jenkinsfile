@@ -31,19 +31,19 @@ pipeline{
         stage("Container creating") {
             steps {
                 script {
-            
-                def containerExists = sh(
-                    script: "docker ps -q --filter 'name=ci-cd-project'",
-                    returnStdout: true
-                ).trim()
-            
-            
-                if (containerExists) {
-                    sh "docker stop ci-cd-project"
-                    sh "docker rm ci-cd-project"
+                    def containerExists = sh(
+                        script: "docker ps -q -a --filter 'name=ci-cd-project'",
+                        returnStdout: true
+                    ).trim()
+
+                    if (containerExists) {
+                        echo "Stopping and removing existing container"
+                        sh 'docker stop ci-cd-project || true'
+                        sh 'docker rm ci-cd-project || true'
+                    } else {
+                        echo "No existing container found"
+                    }
                 }
-            }
-        
                 sh 'docker run -itd --name ci-cd-project -p 8600:3000 22120330/ci-cd-project:latest'
             }
         }
