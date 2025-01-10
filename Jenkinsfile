@@ -39,8 +39,8 @@ pipeline{
             
             
                 if (containerExists) {
-                    sh "docker stop ci-cd-project|| true"
-                    sh "docker rm ci-cd-project|| true"
+                    sh "docker stop ci-cd-project"
+                    sh "docker rm ci-cd-project"
                 }
             }
         
